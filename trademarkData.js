@@ -60,7 +60,7 @@ async function fetchHTML(url) {
     if (cluster.isMaster) {
         console.log(`Primary ${process.pid} is running`);
 
-        const connections = new Array(15).fill(0)
+        const connections = new Array(5).fill(0)
 
         for (let [index, connection] of connections.entries()) {
             await launchCluster()
@@ -95,7 +95,7 @@ async function fetchHTML(url) {
     
                 await connection.beginTransaction()
     
-                trademarks = await query(`SELECT * FROM trademarks WHERE status = 'NOT STARTED' ORDER BY id ASC LIMIT 2000`)
+                trademarks = await query(`SELECT * FROM trademarks WHERE status = 'NOT STARTED' ORDER BY id ASC LIMIT 500`)
     
                 // trademarks = await query(`SELECT * FROM trademarks WHERE Name = 'A'`)
     
