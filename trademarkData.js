@@ -60,7 +60,7 @@ async function fetchHTML(url) {
     if (cluster.isMaster) {
         console.log(`Primary ${process.pid} is running`);
 
-        const connections = new Array(12).fill(0)
+        const connections = new Array(15).fill(0)
 
         for (let [index, connection] of connections.entries()) {
             await launchCluster()
